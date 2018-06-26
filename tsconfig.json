@@ -17,7 +17,7 @@
       "dom"
     ],
     "paths": {
-        "@em-table/*": ["em-table/*"]
+        "em-table/*": ["em-table/*"]
     }
   }
 }
