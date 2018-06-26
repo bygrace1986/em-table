@@ -1,0 +1,19 @@
+{
+  "name": "em-table",
+  "version": "1.0.0",
+  "description": "Filterable, sortable, pageable, squishable angular data table.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bygrace1986/em-table.git"
+  },
+  "author": "Erik Murphy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bygrace1986/em-table/issues"
+  },
+  "homepage": "https://github.com/bygrace1986/em-table#readme"
+}
