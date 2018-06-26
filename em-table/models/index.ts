@@ -1,3 +1,4 @@
+export * from './config.model';
 export * from './data-table.model';
 export * from './date-offset.model';
 export * from './day.model';

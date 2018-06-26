@@ -33,6 +33,7 @@ $dark:          $gray-800 !default;
 $zindex-modal-backdrop: 1040;
 $modal-backdrop-bg: $black;
 $modal-backdrop-opacity: 0.5;
+$modal-dialog-margin: 10px !default;
 $modal-dialog-margin-y-sm-up: 30px;
 $modal-inner-padding: 15px;
 $modal-content-box-shadow-sm-up: 0 5px 15px rgba($black, 0.5);
@@ -50,6 +51,8 @@ $grid-breakpoints: (
   xl: 1200px
 );
 
+$body-bg:                     #e5e5e5 !default;
+$border-width:                1px !default;
 $table-cell-padding:          .75rem !default;
 $table-cell-padding-sm:       .3rem !default;
 

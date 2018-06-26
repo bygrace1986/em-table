@@ -93,10 +93,10 @@
                     <div class="buttons">
                         <button type="button" class="btn btn-outline-danger filter-action" title="Clear"
                             (click)="clear(filterDropDown)">
-                            <i class="material-icons icon">clear</i>
+                            <i class="fa fa-times clear icon"></i>
                         </button>
                         <button type="submit" class="btn btn-outline-success filter-action" title="Apply">
-                            <i class="material-icons icon">check</i>
+                            <i class="fa fa-check clear icon"></i>
                         </button>
                     </div>
                 </form>
@@ -104,6 +104,6 @@
         </div>
     </div>
     <div class="filters" *ngIf="hasFilter" [attr.title]="value">
-        <i class="material-icons clear" title="Clear" (click)="clear()">clear</i> {{value}}
+        <i class="fa fa-times clear" title="Clear" (click)="clear()"></i> {{value}}
     </div>
 </div>

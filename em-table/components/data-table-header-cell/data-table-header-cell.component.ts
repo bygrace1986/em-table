@@ -1,16 +1,12 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy,
-    ElementRef, OnChanges, SimpleChanges, SimpleChange, ViewChild, InjectionToken, Inject, Renderer2 } from '@angular/core';
+    ElementRef, OnChanges, SimpleChanges, SimpleChange, ViewChild, Inject, Renderer2 } from '@angular/core';
 import { NgbDropdown, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject } from 'rxjs';
 
 import { Day, SortDirection, FilterState, FilterType, ValueFilterState,
-    OptionFilterState, RangeFilterState, HeaderConfig, OptionFilterConfig } from '../../models';
+    OptionFilterState, RangeFilterState, HeaderConfig, OptionFilterConfig,
+    DATA_TABLE_CONFIG, DataTableConfig } from '../../models';
 import { DatePickerUtil } from '../../utils';
-
-export const DATA_TABLE_CONFIG = new InjectionToken('DATA_TABLE_CONFIG');
-export interface DataTableConfig {
-    containerSelector: string;
-}
 
 @Component({
     selector: '[bgt-data-table-header-cell]',
