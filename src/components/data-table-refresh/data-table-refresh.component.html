@@ -1,0 +1,10 @@
+<ng-container *ngIf="lastUpdatedOn">
+    <button type="button" class="btn btn-outline-secondary align-text-bottom mr-2"
+        (click)="refresh.next()">
+        <i class="material-icons">refresh</i>
+    </button>
+    <div class="d-inline-block text-muted font-italic">
+        <small>Last sync on</small><br />
+        <small>{{lastUpdatedOn | date: 'MM/dd/yyyy h:mm:ss a'}}</small>
+    </div>
+</ng-container>

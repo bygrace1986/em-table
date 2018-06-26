@@ -1,0 +1,8 @@
+<th bgt-data-table-header-cell 
+    *ngFor="let state of (headerStates | async)" 
+    [config]="state.config" 
+    [sort]="state.sortDirection"
+    [filter]="state.filter"
+    (sortChange)="onSort(state.config.id, $event)"
+    (filterChange)="childFilter.next($event)">
+</th>

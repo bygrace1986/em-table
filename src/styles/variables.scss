@@ -1,0 +1,71 @@
+$white:    #fff !default;
+$gray-100: #f8f9fa !default; // $gray-lightest
+$gray-200: #e9ecef !default; // $gray-lighter
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default; // $gray-light
+$gray-700: #495057 !default; // $gray
+$gray-800: #343a40 !default; // $gray-dark
+$gray-900: #212529 !default; // $gray-darker
+$black:    #000 !default;
+
+$blue:    #2196F3 !default; // Blue 500
+$indigo:  #6610f2 !default;
+$purple:  #7E57C2 !default; // Deep Purple 400
+$pink:    #e83e8c !default;
+$red:     #EF5350 !default; // Red 400
+$orange:  #FFCA28 !default; // Amber 400
+$yellow:  #ffc107 !default;
+$green:   #66BB6A !default; // Green 400
+$teal:    #20c997 !default;
+$cyan:    #00BCD4 !default; // Cyan 500
+
+$primary:       $blue !default;
+$secondary:     $gray-600 !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-800 !default;
+
+$zindex-modal-backdrop: 1040;
+$modal-backdrop-bg: $black;
+$modal-backdrop-opacity: 0.5;
+$modal-dialog-margin-y-sm-up: 30px;
+$modal-inner-padding: 15px;
+$modal-content-box-shadow-sm-up: 0 5px 15px rgba($black, 0.5);
+$zindex-modal: 1050;
+
+$spacer: 1rem !default;
+$card-spacer-y:                     .75rem !default;
+$card-spacer-x:                     1.25rem !default;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+$table-cell-padding:          .75rem !default;
+$table-cell-padding-sm:       .3rem !default;
+
+$table-bg:                    transparent !default;
+$table-accent-bg:             rgba($black,.05) !default;
+$table-hover-bg:              rgba($black,.075) !default;
+$table-active-bg:             $table-hover-bg !default;
+
+$table-border-width:          $border-width !default;
+$table-border-color:          rgba($black,.1) !default;
+
+$table-head-bg:               $gray-200 !default; // $gray-lighter
+$table-head-color:            $gray-700 !default; // $gray
+
+$table-dark-bg:               $gray-900 !default; // $gray-dark
+$table-dark-accent-bg:        rgba($white, .05) !default; // $body-bg
+$table-dark-hover-bg:         rgba($white, .075) !default; // rgba($black,.08)
+$table-dark-border-color:     lighten($gray-900, 7.5%) !default;
+$table-dark-color:            $body-bg !default;

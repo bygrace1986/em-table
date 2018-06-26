@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/bygrace1986/em-table/issues"
   },
-  "homepage": "https://github.com/bygrace1986/em-table#readme"
+  "homepage": "https://github.com/bygrace1986/em-table#readme",
+  "dependencies": {
+    "@angular/core": "^6.0.6",
+    "@ng-bootstrap/ng-bootstrap": "^2.1.2",
+    "rxjs": "^6.2.1",
+    "typescript": "^2.9.2"
+  }
 }

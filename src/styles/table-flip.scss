@@ -1,0 +1,106 @@
+@import './variables.scss';
+@import './breakpoints.scss';
+
+@mixin table-flip {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+
+    thead{
+        display: flex;
+        flex-direction: row;
+
+        th {
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: none;
+            max-width: 13rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+            .sort-wrap, .title {
+                flex-grow: 1;
+            }
+
+            .title {
+                display: inline-block;
+                max-width: 8rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .filters {
+                display: none;
+            }
+        }
+
+        tr th:first-child {
+            border-top: none;
+        }
+
+        tr th:last-child {
+            flex-grow: 1;
+        }
+    }
+
+    tbody {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+        overflow-y: auto;
+
+        tr:nth-child(odd) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr td:first-child {
+            border-top: none;
+        }
+
+        td {
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            // to ensure that the cell takes up the full width available
+            min-width: 100%;
+        }
+    }
+
+    tr {
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+        flex-grow: 1;
+    }
+
+    td, th {
+        min-height: 3rem;
+    }
+
+    .fit-to-content {
+        width: auto;
+    }
+}
+
+table.table-flip {
+    @include table-flip;
+}
+
+// create responsive tables up to a particular breakpoint "table.table-flip{-sm|-md|-lg|-xl}"
+@each $breakpoint in map-keys($grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @include media-breakpoint-down($breakpoint) {
+        table.table-flip#{$infix} {
+            @include table-flip;
+        }
+    }
+}

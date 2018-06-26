@@ -1,0 +1,109 @@
+<div class="header"
+    [class.is-sorted]="sort === 1 || sort === 2"
+    [class.is-filtered]="hasFilter">
+    <div class="title-wrap">
+        <div class="sort-wrap"
+            [class.sortable]="config.isSortable"
+            (click)="toggleSort()">
+            <span class="title">{{config.title}}</span>
+            <span class="sort"
+                *ngIf="config.isSortable">
+                <i class="fa fa-caret-up sort-dir" [class.selected]="sort === 1" aria-hidden="true"></i>
+                <i class="fa fa-caret-down sort-dir" [class.selected]="sort === 2" aria-hidden="true"></i>
+            </span>
+        </div>
+        <div class="filter"
+            *ngIf="config.filter"
+            ngbDropdown
+            [placement]="placement | async"
+            autoClose="outside"
+            (openChange)="onDropdownOpenChange($event)"
+            #dropDown
+            #filterDropDown="ngbDropdown">
+            <span class="toggle" ngbDropdownToggle>
+                <i class="fa fa-filter icon" aria-hidden="true"></i>
+            </span>
+            <div ngbDropdownMenu [ngSwitch]="config.filter.type">
+                <form (submit)="apply(filterDropDown)">
+                    <!-- TEXT -->
+                    <ng-container *ngSwitchCase="0">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="input-text"
+                                [(ngModel)]="inputText" #text/>
+                        </div>
+                    </ng-container>
+                    <!-- DROPDOWN -->
+                    <ng-container *ngSwitchCase="1">
+                        <div class="form-group">
+                            <select class="form-control" name="select-option"
+                                #select
+                                [(ngModel)]="dropdownOption">
+                                <option></option>
+                                <option 
+                                    *ngFor="let ddOption of config.filter.options; let i = index"
+                                    value="{{ddOption.key}}">
+                                    {{ddOption.value}}
+                                </option>
+                            </select>
+                        </div>
+                    </ng-container>
+                    <!-- CHECKBOX -->
+                    <ng-container *ngSwitchCase="2">
+                        <div class="option-list">
+                            <div class="checkbox" *ngFor="let checkbox of config.filter.options; let i = index">
+                                <input type="checkbox" id="checkbox-{{config.id}}-{{i}}" name="checkbox-{{config.id}}-{{i}}" value="{{checkbox.key}}"
+                                    [checked]="checkboxOptions.includes(checkbox.key)"
+                                    (change)="toggleCheckbox(checkbox.key)"/>
+                                <label for="checkbox-{{config.id}}-{{i}}">{{checkbox.value}}</label>
+                            </div>
+                        </div>
+                    </ng-container>
+                    <!-- RADIO -->
+                    <ng-container *ngSwitchCase="3">
+                        <div class="option-list">
+                            <div class="radio" *ngFor="let radio of config.filter.options; let i = index">
+                                <input type="radio" id="radio-{{config.id}}-{{i}}" name="radio-{{config.id}}" value="{{radio.key}}"
+                                    [(ngModel)]="radioOption" />
+                                <label for="radio-{{config.id}}-{{i}}">{{radio.value}}</label>
+                            </div>
+                        </div>
+                    </ng-container>
+                    <!-- DATE -->
+                    <ng-container *ngSwitchCase="4">
+                        <div class="form-group d-flex justify-content-center">
+                            <ngb-datepicker name="date" [(ngModel)]="date" [firstDayOfWeek]="7" #datePicker></ngb-datepicker>
+                        </div>
+                    </ng-container>
+                    <!-- DATE RANGE -->
+                    <ng-container *ngSwitchCase="5">
+                        <div class="date-range form-group d-flex justify-content-center">
+                            <div class="d-flex flex-column mr-2 mt-2">
+                                <label>From</label>
+                                <ngb-datepicker name="from" [(ngModel)]="from" [firstDayOfWeek]="7" #fromPicker></ngb-datepicker>
+                            </div>
+                            <div class="d-flex flex-column mt-2">
+                                <label>To</label>
+                                <ngb-datepicker name="to" [(ngModel)]="to" [firstDayOfWeek]="7" #toPicker></ngb-datepicker>
+                            </div>
+                        </div>
+                        <div class="callout callout-warning" *ngIf="hasDateRangeError">
+                            "From" date must be less than or equal to the "To" date.
+                        </div>
+                    </ng-container>
+                    <div class="buttons">
+                        <button type="button" class="btn btn-outline-danger filter-action" title="Clear"
+                            (click)="clear(filterDropDown)">
+                            <i class="material-icons icon">clear</i>
+                        </button>
+                        <button type="submit" class="btn btn-outline-success filter-action" title="Apply">
+                            <i class="material-icons icon">check</i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="filters" *ngIf="hasFilter" [attr.title]="value">
+        <i class="material-icons clear" title="Clear" (click)="clear()">clear</i> {{value}}
+    </div>
+</div>

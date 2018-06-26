@@ -1,0 +1,15 @@
+<div class="d-flex">
+    <ngb-pagination
+        *ngIf="page"
+        [collectionSize]="page.itemCount"
+        [page]="page.pageNumber"
+        [pageSize]="page.pageSize"
+        (pageChange)="pageChange.next($event)"
+        [hidden]="page.itemCount <= page.pageSize">
+    </ngb-pagination>
+    
+    <bgt-data-table-refresh class="ml-auto"
+        [lastUpdatedOn]="lastUpdatedOn"
+        (refresh)="refresh.next()">
+    </bgt-data-table-refresh>
+</div>

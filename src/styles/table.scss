@@ -1,0 +1,107 @@
+@import './variables.scss';
+
+.table {
+    margin-bottom: 0.5rem;
+
+    tbody tr:last-child td {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .table-inactive {
+        background-color: $gray-100;
+    }
+
+    .action-dd-col {
+        padding: 0;
+        .dropdown {
+            float: right;
+        }
+    }
+
+    .fit-to-content {
+        width: 1%;
+        white-space: nowrap;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: flex-end;
+
+        .action {
+            display: inline-flex;
+        }
+    }
+
+    .action {
+        cursor: pointer;
+        margin: 0 ($card-spacer-x * .5);
+
+        &:hover {
+            color: $primary;
+        }
+
+        &.action-success:hover {
+            color: $success;
+        }
+        
+        &.action-info:hover {
+            color: $info;
+        }
+        
+        &.action-warn:hover {
+            color: $warning;
+        }
+        
+        &.action-danger:hover {
+            color: $danger;
+        }
+    }
+
+    &.is-loading {
+        position: relative;
+
+        &::before, thead::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            display: block;
+        }
+        
+        &::before {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.6);
+            cursor: progress;
+        }
+
+        thead::after {
+            height: $table-border-width * 2;
+            background-color: lighten($primary, 15%);
+            margin-top: -2px;
+            animation: table-loading-bar 1s infinite ease-out;
+        }
+    }
+}
+
+@keyframes table-loading-bar { 
+    0% {
+      width: 0;
+      left: 0%;
+    }
+    8% {
+      width: 10%;
+      left: 0%;
+    }
+    60% {
+      left: 80%;
+    }
+    80% {
+      width: 10%;
+      left: 90%;
+    }
+    100% {
+      width: 0;
+      left: 100%;
+    }
+}

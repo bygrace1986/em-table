@@ -1,0 +1,182 @@
+@import '../../../styles/variables.scss';
+
+$unselected: lighten($gray-700, 60%);
+$selected: $gray-700;
+$hovered: $info;
+$spacer: 0.3em;
+
+.header, .sort-wrap, .title-wrap, .title, .sort, .filter {
+    display: flex;
+}
+
+.header {
+    flex-direction: column;
+}
+
+.title-wrap {
+    flex-direction: row;
+}
+
+.title {
+    padding-right: 0.5em;
+}
+
+.sort-wrap {
+    flex-direction: row;
+}
+
+.sortable {
+    cursor: pointer;
+
+    &:hover {
+        .title, .sort-dir {
+            color: $hovered;
+        }
+    }
+}
+
+.sort {
+    flex-direction: column;
+    padding: 0 $spacer;
+
+    .sort-dir {
+        display: flex;
+        color: $unselected;
+        line-height: 0.65em;
+        font-size: 1.1em;
+
+        &.selected {
+            color: $selected;
+        }
+    }
+}
+
+.filter {
+    color: $unselected;
+    cursor: pointer;
+
+    .toggle {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding: 0.1em $spacer 0 $spacer;
+        justify-content: center;
+
+        .icon::before {
+            vertical-align: middle;
+        }
+    }
+
+    .is-filtered & {
+        color: $selected;
+    }
+
+    &:hover, .is-filtered &:hover {
+        color: $hovered;
+    }
+
+    .dropdown-menu {
+        padding: 0.5em;
+    }
+
+    .dropdown-toggle::after {
+        display: none;
+    }
+
+    .filter-action {
+        padding: 0.25em .5rem;
+
+        .icon {
+            margin: 0;
+        }
+    }
+}
+
+.option-list {
+    max-height: 14em;
+    overflow: auto;
+}
+
+.filters {
+    max-width: 15em;
+    color: $gray-600;
+    font-size: 0.7em;
+    font-weight: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    .clear {
+        font-size: 1em;
+        color: $danger;
+        cursor: pointer;
+        vertical-align: middle
+    }
+}
+
+@mixin dd-modal {
+    .dropdown.show::before {
+        content: '';
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: $zindex-modal-backdrop;
+        background-color: $modal-backdrop-bg;
+        opacity: $modal-backdrop-opacity;
+    }
+
+    .dropdown-menu {
+        position: fixed;
+        top: $modal-dialog-margin-y-sm-up !important; // to override inline styles
+        left: 50% !important; // to override inline styles
+        transform: translateX(-50%);
+        z-index: $zindex-modal;
+        padding: $modal-inner-padding;
+        box-shadow: $modal-content-box-shadow-sm-up;
+    }
+}
+
+
+:host-context(table.table-flip), :host-context(table.table-flip-xl) {
+    @include dd-modal;
+}
+@media(max-width: map-get($grid-breakpoints, xl) - 1) {
+    :host-context(table.table-flip-lg) {
+        @include dd-modal;
+    }
+}
+@media(max-width: map-get($grid-breakpoints, lg) - 1) {
+    :host-context(table.table-flip-md) {
+        @include dd-modal;
+    }
+}
+@media(max-width: map-get($grid-breakpoints, md) - 1) {
+    :host-context(table.table-flip-sm) {
+        @include dd-modal;
+    }
+}
+@media(max-width: map-get($grid-breakpoints, sm) - 1) {
+    :host-context(table.table-flip-xs) {
+        @include dd-modal;
+    }
+
+    :host-context(table.table-flip),
+    :host-context(table.table-flip-xs),
+    :host-context(table.table-flip-sm),
+    :host-context(table.table-flip-md),
+    :host-context(table.table-flip-lg),
+    :host-context(table.table-flip-xl) {
+        .dropdown-menu {
+            top: $modal-dialog-margin !important;
+            left: 2em !important;
+            right: 2em;
+            transform: none;
+        }
+    }
+    .date-range {
+        flex-wrap: wrap;
+    }
+}
