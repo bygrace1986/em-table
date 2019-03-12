@@ -1,4 +1,4 @@
-import { HeaderConfig, FilterConfig, FilterType, OptionFilterConfig } from 'em-table/models';
+import { HeaderConfig, FilterConfig, FilterType, OptionFilterConfig } from '../../../em-table/models';
 import { Role, Status, Color } from './table-demo.model';
 
 export const tableDemoHeader = [

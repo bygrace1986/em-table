@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { BehaviorSubject, Observable, of, ReplaySubject } from 'rxjs';
 import { publishReplay, refCount, delay, startWith } from 'rxjs/operators';
 
-import { HeaderConfig, SortState, FilterState, SortDirection, PageState, PageVm } from 'em-table/models';
-import { dtFilter, dtSort, dtPaginate } from 'em-table/operators';
+import { HeaderConfig, SortState, FilterState, SortDirection, PageState, PageVm } from '../../../em-table/models';
+import { dtFilter, dtSort, dtPaginate } from '../../../em-table/operators';
 import { User } from './table-demo.model';
 import { tableDemoHeader } from './table-demo-header';
 import { users } from './table-demo-data';
